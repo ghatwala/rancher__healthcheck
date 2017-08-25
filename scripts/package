@@ -15,6 +15,6 @@ REPO=${REPO:-rancher}
 cp ../bin/healthcheck ../pkg/haproxy/haproxy_reload.sh ../pkg/haproxy/haproxy_template.cfg .
 
 IMAGE=${REPO}/healthcheck:${TAG}
-docker build -t ${IMAGE} .
+docker build --build-arg ARCH=${ARCH} -t ${IMAGE} .
 echo ${IMAGE} > ../dist/images
 echo Built ${IMAGE}
